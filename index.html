@@ -1,0 +1,2617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sri Venkatachalapathy Agencies | Premium Bike Accessories & Helmets - Thanjavur</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;600;700;900&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --red: #e8000d;
+      --dark: #0a0a0f;
+      --darker: #050508;
+      --card: #12121a;
+      --accent: #ff6600;
+      --gold: #ffd700;
+      --white: #f0f0f0;
+      --muted: #888;
+      --border: #1e1e2e;
+      --glow: 0 0 30px rgba(232, 0, 13, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--darker);
+      color: var(--white);
+      font-family: 'Exo 2', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--red);
+      border-radius: 2px;
+    }
+
+    /* ===== BIKE SPINNER LOADER ===== */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--darker);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s;
+    }
+
+    #loader.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loader-track {
+      width: 400px;
+      height: 6px;
+      background: #111;
+      border-radius: 3px;
+      position: relative;
+      overflow: visible;
+      margin-bottom: 30px;
+    }
+
+    .loader-road {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(90deg, #222 0, #222 20px, transparent 20px, transparent 40px);
+      animation: roadMove 0.4s linear infinite;
+    }
+
+    .bike-loader {
+      position: absolute;
+      top: -18px;
+      font-size: 36px;
+      animation: bikeRun 2s linear forwards;
+    }
+
+    @keyframes bikeRun {
+      0% {
+        left: -40px;
+      }
+
+      100% {
+        left: 420px;
+      }
+    }
+
+    @keyframes roadMove {
+      0% {
+        background-position: 0;
+      }
+
+      100% {
+        background-position: -40px;
+      }
+    }
+
+    .loader-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 14px;
+      color: var(--red);
+      letter-spacing: 4px;
+      animation: pulse 1s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
+    }
+
+    .loader-brand {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 22px;
+      color: var(--white);
+      letter-spacing: 3px;
+      margin-bottom: 40px;
+    }
+
+    .loader-brand span {
+      color: var(--red);
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 0 5%;
+      background: rgba(5, 5, 8, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .nav-logo span {
+      color: var(--red);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--red);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      cursor: pointer;
+      clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+      transition: all 0.3s;
+    }
+
+    .nav-cta:hover {
+      background: #ff2020;
+      box-shadow: var(--glow);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 2px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 50%, rgba(232, 0, 13, 0.12) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(255, 102, 0, 0.08) 0%, transparent 50%), var(--darker);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 5%;
+      max-width: 700px;
+      padding-top: 100px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232, 0, 13, 0.15);
+      border: 1px solid rgba(232, 0, 13, 0.3);
+      padding: 6px 16px;
+      border-radius: 2px;
+      font-size: 12px;
+      font-family: 'Rajdhani', sans-serif;
+      letter-spacing: 3px;
+      color: var(--red);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      animation: fadeUp 0.8s 0.2s both;
+    }
+
+    .hero-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(32px, 5vw, 64px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      animation: fadeUp 0.8s 0.4s both;
+    }
+
+    .hero-title .line2 {
+      color: var(--red);
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      animation: fadeUp 0.8s 0.5s both;
+    }
+
+    .hero-since {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      color: var(--accent);
+      letter-spacing: 3px;
+      margin-bottom: 32px;
+      animation: fadeUp 0.8s 0.6s both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.7s both;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      cursor: pointer;
+      clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: #ff1a1a;
+      box-shadow: var(--glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+      padding: 14px 32px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      cursor: pointer;
+      clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    /* HERO BIKE ANIMATION */
+    .hero-bike-scene {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 55%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .hero-bike-img {
+      width: 90%;
+      max-width: 700px;
+      animation: bikeFloat 4s ease-in-out infinite;
+      filter: drop-shadow(0 0 40px rgba(232, 0, 13, 0.3));
+    }
+
+    @keyframes bikeFloat {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(1deg);
+      }
+    }
+
+    .hero-road {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 80px;
+      background: linear-gradient(to top, rgba(232, 0, 13, 0.1), transparent);
+    }
+
+    .speed-lines {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40%;
+      overflow: hidden;
+      height: 200px;
+    }
+
+    .speed-line {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(to right, transparent, rgba(232, 0, 13, 0.5), transparent);
+      animation: speedLine 1.5s linear infinite;
+    }
+
+    .speed-line:nth-child(1) {
+      top: 20%;
+      width: 60%;
+      animation-delay: 0s;
+    }
+
+    .speed-line:nth-child(2) {
+      top: 40%;
+      width: 80%;
+      animation-delay: 0.3s;
+    }
+
+    .speed-line:nth-child(3) {
+      top: 60%;
+      width: 50%;
+      animation-delay: 0.6s;
+    }
+
+    .speed-line:nth-child(4) {
+      top: 80%;
+      width: 70%;
+      animation-delay: 0.9s;
+    }
+
+    @keyframes speedLine {
+      0% {
+        transform: translateX(120%);
+      }
+
+      100% {
+        transform: translateX(-120%);
+      }
+    }
+
+    @keyframes fadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== TICKER ===== */
+    .ticker-wrap {
+      background: var(--red);
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-content {
+      display: inline-block;
+      animation: ticker 25s linear infinite;
+    }
+
+    .ticker-item {
+      display: inline-block;
+      margin: 0 40px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+
+    .ticker-item i {
+      margin-right: 8px;
+    }
+
+    @keyframes ticker {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ===== STATS ===== */
+    #stats {
+      padding: 80px 5%;
+      background: var(--dark);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2px;
+    }
+
+    .stat-card {
+      background: var(--card);
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(232, 0, 13, 0.05), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .stat-card:hover::before {
+      opacity: 1;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .stat-num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .stat-icon {
+      font-size: 24px;
+      color: var(--border);
+      margin-bottom: 12px;
+    }
+
+    /* ===== SECTION STYLES ===== */
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-tag {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      letter-spacing: 4px;
+      color: var(--red);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(24px, 3vw, 40px);
+      font-weight: 700;
+    }
+
+    .section-title span {
+      color: var(--red);
+    }
+
+    .section-line {
+      width: 60px;
+      height: 3px;
+      background: var(--red);
+      margin: 20px auto 0;
+    }
+
+    /* ===== ABOUT / TIMELINE ===== */
+    #about {
+      padding: 80px 5%;
+      background: var(--darker);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, var(--red), transparent);
+      transform: translateX(-50%);
+    }
+
+    .tl-item {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: calc(50% + 40px);
+      margin-bottom: 50px;
+      position: relative;
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: all 0.6s;
+    }
+
+    .tl-item.right {
+      justify-content: flex-start;
+      padding-right: 0;
+      padding-left: calc(50% + 40px);
+      transform: translateX(40px);
+    }
+
+    .tl-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .tl-dot {
+      position: absolute;
+      left: 50%;
+      top: 20px;
+      width: 16px;
+      height: 16px;
+      background: var(--red);
+      border: 3px solid var(--darker);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 15px rgba(232, 0, 13, 0.6);
+    }
+
+    .tl-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 24px;
+      max-width: 380px;
+      position: relative;
+    }
+
+    .tl-card::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      right: -8px;
+      width: 16px;
+      height: 16px;
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      transform: rotate(45deg);
+    }
+
+    .tl-item.right .tl-card::before {
+      right: auto;
+      left: -8px;
+      border-top: 1px solid var(--border);
+      border-right: none;
+      border-left: 1px solid var(--border);
+      transform: rotate(-45deg);
+    }
+
+    .tl-year {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+
+    .tl-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .tl-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ===== PRODUCTS ===== */
+    #products {
+      padding: 80px 5%;
+      background: var(--dark);
+    }
+
+    .cat-tabs {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .cat-tab {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 10px 24px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      cursor: pointer;
+      clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+      transition: all 0.3s;
+    }
+
+    .cat-tab:hover,
+    .cat-tab.active {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .product-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+      transition: all 0.4s;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      border-color: var(--red);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(232, 0, 13, 0.2);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 16px;
+      left: 0;
+      background: var(--red);
+      color: #fff;
+      padding: 4px 16px 4px 12px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 50%, calc(100% - 6px) 100%, 0 100%);
+      z-index: 2;
+    }
+
+    .product-cert {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .cert-badge {
+      background: rgba(255, 215, 0, 0.15);
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      color: var(--gold);
+      padding: 3px 8px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-radius: 2px;
+    }
+
+    .product-img-wrap {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+      background: #0d0d15;
+    }
+
+    .product-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .product-card:hover .product-img-wrap img {
+      transform: scale(1.08);
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-brand {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--red);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .product-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .product-desc {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .price-offer {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--red);
+    }
+
+    .price-mrp {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+
+    .price-save {
+      font-size: 12px;
+      color: #00c853;
+      font-weight: 600;
+    }
+
+    .btn-buy {
+      width: 100%;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 12px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-buy:hover {
+      background: #ff1a1a;
+      box-shadow: var(--glow);
+    }
+
+    .product-card.hidden {
+      display: none;
+    }
+
+    /* OFFER BANNER */
+    .offer-banner {
+      background: linear-gradient(135deg, var(--red), #ff6600);
+      padding: 40px;
+      text-align: center;
+      margin: 60px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .offer-banner::before {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+      animation: offerPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes offerPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    .offer-banner h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(20px, 3vw, 36px);
+      font-weight: 900;
+      position: relative;
+      z-index: 1;
+    }
+
+    .offer-banner p {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 18px;
+      letter-spacing: 2px;
+      margin-top: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== CERTIFICATIONS ===== */
+    #certifications {
+      padding: 60px 5%;
+      background: var(--darker);
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+    }
+
+    .cert-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .cert-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .cert-icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+
+    .cert-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .cert-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ===== PARCEL ===== */
+    #parcel {
+      padding: 80px 5%;
+      background: var(--dark);
+    }
+
+    .parcel-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .parcel-text h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(22px, 2.5vw, 36px);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .parcel-text h2 span {
+      color: var(--red);
+    }
+
+    .parcel-text p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
+
+    .parcel-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .parcel-feat {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .parcel-feat i {
+      color: var(--red);
+      font-size: 18px;
+      width: 20px;
+    }
+
+    .parcel-map iframe {
+      width: 100%;
+      height: 350px;
+      border: none;
+      filter: grayscale(30%) contrast(1.1);
+    }
+
+    /* ===== WHATSAPP COMMUNITY ===== */
+    #community {
+      padding: 80px 5%;
+      background: var(--darker);
+      text-align: center;
+    }
+
+    .wa-box {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid #25D366;
+      padding: 50px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wa-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(37, 211, 102, 0.05), transparent 60%);
+    }
+
+    .wa-icon {
+      font-size: 60px;
+      color: #25D366;
+      margin-bottom: 20px;
+      animation: waPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes waPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    .wa-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .wa-subtitle {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 30px;
+      line-height: 1.7;
+    }
+
+    .qr-area {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .qr-code {
+      width: 120px;
+      height: 120px;
+      background: white;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qr-code svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .qr-text {
+      text-align: left;
+    }
+
+    .qr-text p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .btn-wa {
+      background: #25D366;
+      color: #fff;
+      border: none;
+      padding: 14px 36px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s;
+    }
+
+    .btn-wa:hover {
+      background: #20bd5a;
+      transform: translateY(-2px);
+    }
+
+    /* ===== CONTACT ===== */
+    #contact {
+      padding: 80px 5%;
+      background: var(--dark);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+
+    .contact-info h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      width: 46px;
+      height: 46px;
+      background: rgba(232, 0, 13, 0.1);
+      border: 1px solid rgba(232, 0, 13, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--red);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .contact-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .contact-val {
+      font-size: 15px;
+      color: var(--white);
+    }
+
+    .contact-val a {
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-val a:hover {
+      color: var(--red);
+    }
+
+    .hours-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 24px;
+      margin-top: 24px;
+    }
+
+    .hours-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: var(--red);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    .hours-row:last-child {
+      border-bottom: none;
+    }
+
+    .hours-row span:last-child {
+      color: var(--accent);
+    }
+
+    .social-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .social-btn {
+      width: 42px;
+      height: 42px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .social-btn:hover {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    /* ===== MAP SECTION ===== */
+    .map-section {
+      height: 400px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-section iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .map-overlay {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(5, 5, 8, 0.9);
+      border: 1px solid var(--border);
+      padding: 16px 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .map-overlay h4 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .map-overlay p {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ===== OWNER SECTION ===== */
+    #owner {
+      padding: 80px 5%;
+      background: var(--darker);
+    }
+
+    .owner-box {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .owner-avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 0;
+      background: linear-gradient(135deg, var(--red), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 60px;
+      font-weight: 900;
+      color: #fff;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .owner-avatar::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      background: linear-gradient(135deg, var(--red), var(--accent));
+      z-index: -1;
+    }
+
+    .owner-avatar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--darker);
+      transform: translate(6px, 6px);
+      z-index: -2;
+    }
+
+    .owner-info h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .owner-info .owner-role {
+      font-family: 'Rajdhani', sans-serif;
+      color: var(--red);
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .owner-info p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .owner-badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .owner-badge {
+      background: rgba(232, 0, 13, 0.1);
+      border: 1px solid rgba(232, 0, 13, 0.2);
+      padding: 6px 16px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--red);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 50px 5% 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand .logo span {
+      color: var(--red);
+    }
+
+    .footer-brand p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: var(--red);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-bottom p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ===== POPUP ===== */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      backdrop-filter: blur(6px);
+    }
+
+    .popup-overlay.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .popup-box {
+      background: var(--card);
+      border: 1px solid var(--red);
+      padding: 40px;
+      max-width: 480px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: scale(0.7);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 20px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .popup-close:hover {
+      color: var(--red);
+    }
+
+    .popup-icon {
+      font-size: 50px;
+      color: #25D366;
+      margin-bottom: 20px;
+      animation: waPulse 1.5s ease-in-out infinite;
+    }
+
+    .popup-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .popup-text {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .popup-timer {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+
+    .popup-timer-label {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      margin-bottom: 24px;
+    }
+
+    .popup-product {
+      background: rgba(232, 0, 13, 0.05);
+      border: 1px solid rgba(232, 0, 13, 0.15);
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: var(--white);
+      text-align: left;
+    }
+
+    .popup-product strong {
+      color: var(--red);
+    }
+
+    /* ===== BACK TO TOP ===== */
+    #topBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 46px;
+      height: 46px;
+      background: var(--red);
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 500;
+      clip-path: polygon(4px 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
+      transition: all 0.3s;
+    }
+
+    #topBtn:hover {
+      background: #ff1a1a;
+      transform: translateY(-3px);
+    }
+
+    #topBtn.show {
+      display: flex;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:900px) {
+      .hero-bike-scene {
+        display: none;
+      }
+
+      .parcel-content,
+      .contact-grid,
+      .owner-box,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline::before {
+        left: 20px;
+      }
+
+      .tl-item {
+        padding-right: 0;
+        padding-left: 50px;
+      }
+
+      .tl-item.right {
+        padding-left: 50px;
+      }
+
+      .tl-dot {
+        left: 20px;
+      }
+
+      .tl-card::before,
+      .tl-item.right .tl-card::before {
+        display: none;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--dark);
+        padding: 20px 5%;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-brand">SRI <span>VENKATACHALAPATHY</span></div>
+    <div class="loader-track">
+      <div class="loader-road"></div>
+      <div class="bike-loader">🏍️</div>
+    </div>
+    <div class="loader-text">LOADING EXPERIENCE...</div>
+  </div>
+
+  <!-- PURCHASE POPUP -->
+  <div class="popup-overlay" id="purchasePopup">
+    <div class="popup-box">
+      <button class="popup-close" onclick="closePopup()"><i class="fas fa-times"></i></button>
+      <div class="popup-icon"><i class="fab fa-whatsapp"></i></div>
+      <div class="popup-title">Order Confirmed! 🎉</div>
+      <div class="popup-product" id="popupProductInfo">Product details loading...</div>
+      <div class="popup-text">Our team will contact you on WhatsApp within:</div>
+      <div class="popup-timer" id="popupTimer">30:00</div>
+      <div class="popup-timer-label">MINUTES</div>
+      <div class="popup-text">Your enquiry is being forwarded to <strong>Navanithan KJ</strong> and team right now!
+      </div>
+      <button class="btn-wa" style="width:100%;justify-content:center;"
+        onclick="window.open('https://wa.me/919362352777?text='+encodeURIComponent(currentProductMsg),'_blank')">
+        <i class="fab fa-whatsapp"></i> OPEN WHATSAPP NOW
+      </button>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <div class="nav-inner">
+      <div class="nav-logo">SRI <span>VENKATA</span></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#parcel">Delivery</a></li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-cta" onclick="scrollToSection('products')">SHOP NOW</button>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="speed-lines">
+      <div class="speed-line"></div>
+      <div class="speed-line"></div>
+      <div class="speed-line"></div>
+      <div class="speed-line"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fas fa-fire"></i> THANJAVUR'S #1 BIKE ACCESSORIES STORE</div>
+      <h1 class="hero-title">
+        <div>SRI VENKATA</div>
+        <div class="line2">CHALAPATHY</div>
+        <div>AGENCIES</div>
+      </h1>
+      <p class="hero-subtitle">Premium Helmets & Bike Accessories</p>
+      <p class="hero-since">⚡ SERVING RIDERS SINCE 2012 · 15+ YEARS · 10,000+ CUSTOMERS</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary"><i class="fas fa-shopping-bag"></i> SHOP NOW</a>
+        <a href="tel:9362352777" class="btn-outline"><i class="fas fa-phone"></i> CALL US</a>
+      </div>
+    </div>
+    <div class="hero-bike-scene">
+      <img class="hero-bike-img" src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=800&q=80"
+        alt="Premium Motorcycle">
+      <div class="hero-road"></div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-content">
+      <span class="ticker-item"><i class="fas fa-helmet-safety"></i> HELMETS STARTING ₹499</span>
+      <span class="ticker-item"><i class="fas fa-gift"></i> FREE GIFT ON PURCHASE ABOVE ₹2000</span>
+      <span class="ticker-item"><i class="fas fa-truck"></i> ALL OVER TAMIL NADU PARCEL SERVICE</span>
+      <span class="ticker-item"><i class="fas fa-star"></i> ISI & DOT CERTIFIED HELMETS</span>
+      <span class="ticker-item"><i class="fas fa-users"></i> 10,000+ HAPPY CUSTOMERS</span>
+      <span class="ticker-item"><i class="fas fa-award"></i> 15 YEARS OF TRUST SINCE 2012</span>
+      <span class="ticker-item"><i class="fas fa-whatsapp fab"></i> WHATSAPP ORDER AVAILABLE</span>
+      <span class="ticker-item"><i class="fas fa-helmet-safety"></i> HELMETS STARTING ₹499</span>
+      <span class="ticker-item"><i class="fas fa-gift"></i> FREE GIFT ON PURCHASE ABOVE ₹2000</span>
+      <span class="ticker-item"><i class="fas fa-truck"></i> ALL OVER TAMIL NADU PARCEL SERVICE</span>
+      <span class="ticker-item"><i class="fas fa-star"></i> ISI & DOT CERTIFIED HELMETS</span>
+      <span class="ticker-item"><i class="fas fa-users"></i> 10,000+ HAPPY CUSTOMERS</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <section id="stats">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-users"></i></div>
+        <div class="stat-num" data-target="10000">0</div>
+        <div class="stat-label">Happy Customers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-calendar"></i></div>
+        <div class="stat-num" data-target="15">0</div>
+        <div class="stat-label">Years of Excellence</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-helmet-safety"></i></div>
+        <div class="stat-num" data-target="500">0</div>
+        <div class="stat-label">Helmet Models</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-truck"></i></div>
+        <div class="stat-num" data-target="38">0</div>
+        <div class="stat-label">Districts Served</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-star"></i></div>
+        <div class="stat-num" data-target="5">0</div>
+        <div class="stat-label">Star Rating</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFER BANNER -->
+  <div class="offer-banner" style="margin:0;padding:50px 5%;">
+    <h2>🎁 Purchase Worth ₹2000 & Get a FREE GIFT!</h2>
+    <p>Walk in to our store in Thanjavur or Order Online via WhatsApp</p>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="section-header">
+      <div class="section-tag">🏍️ Our Collection</div>
+      <h2 class="section-title">PREMIUM <span>PRODUCTS</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="cat-tabs">
+      <button class="cat-tab active" onclick="filterProducts('all')">ALL</button>
+      <button class="cat-tab" onclick="filterProducts('helmet')">HELMETS</button>
+      <button class="cat-tab" onclick="filterProducts('jacket')">RIDING JACKETS</button>
+      <button class="cat-tab" onclick="filterProducts('accessories')">ACCESSORIES</button>
+      <button class="cat-tab" onclick="filterProducts('cover')">BIKE COVERS</button>
+      <button class="cat-tab" onclick="filterProducts('trip')">TRIP GEAR</button>
+    </div>
+    <div class="products-grid" id="productsGrid">
+
+      <!-- HELMETS -->
+      <div class="product-card" data-cat="helmet">
+        <div class="product-badge">HOT DEAL</div>
+        <div class="product-cert"><span class="cert-badge">ISI</span><span class="cert-badge">DOT</span></div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1558981359-219d6364c9c8?w=400&q=80" alt="Steelbird SBA-21 Helmet">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Steelbird</div>
+          <div class="product-name">SBA-21 Full Face Helmet</div>
+          <div class="product-desc">Advanced aerodynamic design with superior ventilation. ISI Mark certified. Available
+            in multiple colors.</div>
+          <div class="price-row"><span class="price-offer">₹1,299</span><span class="price-mrp">₹1,800</span><span
+              class="price-save">Save ₹501</span></div>
+          <button class="btn-buy"
+            onclick="buyNow('Steelbird SBA-21 Full Face Helmet','₹1,299','ISI & DOT Certified')"><i
+              class="fab fa-whatsapp"></i> BUY ON WHATSAPP</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="helmet">
+        <div class="product-badge">BESTSELLER</div>
+        <div class="product-cert"><span class="cert-badge">DOT</span><span class="cert-badge">ECE</span></div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1591370874773-6702e8f12fd8?w=400&q=80" alt="Vega Crux Helmet">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Vega</div>
+          <div class="product-name">Crux Full Face Helmet</div>
+          <div class="product-desc">Lightweight shell construction, anti-scratch visor, and plush interior padding for
+            all-day comfort.</div>
+          <div class="price-row"><span class="price-offer">₹899</span><span class="price-mrp">₹1,299</span><span
+              class="price-save">Save ₹400</span></div>
+          <button class="btn-buy" onclick="buyNow('Vega Crux Full Face Helmet','₹899','DOT & ECE Certified')"><i
+              class="fab fa-whatsapp"></i> BUY ON WHATSAPP</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="helmet">
+        <div class="product-badge">STARTING ₹499</div>
+        <div class="product-cert"><span class="cert-badge">ISI</span></div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1615172282427-9a57ef2d142e?w=400&q=80" alt="Open Face Helmet">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Studds</div>
+          <div class="product-name">Chrome Open Face Helmet</div>
+          <div class="product-desc">Classic open face design with wide visor. ISI certified. Best for city commuting.
+            Multiple color options.</div>
+          <div class="price-row"><span class="price-offer">₹499</span><span class="price-mrp">₹799</span><span
+              class="price-save">Save ₹300</span></div>
+          <button class="btn-buy" onclick="buyNow('Studds Chrome Open Face Helmet','₹499','ISI Certified')"><i
+              class="fab fa-whatsapp"></i> BUY ON WHATSAPP</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="helmet">
+        <div class="product-badge">PREMIUM</div>
+        <div class="product-cert"><span class="cert-badge">DOT</span><span class="cert-badge">SNELL</span></div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1547549082-6bc09f2049ae?w=400&q=80" alt="LS2 FF800 Storm">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">LS2</div>
+          <div class="product-name">FF800 Storm Full Face</div>
+          <div class="product-desc">Premium carbon fiber shell. Pinlock visor ready. Advanced ventilation. Racing-grade
+            protection.</div>
+          <div class="price-row"><span class="price-offer">₹8,999</span><span class="price-mrp">₹12,500</span><span
+              class="price-save">Save ₹3,501</span></div>
+          <button class="btn-buy"
+            onclick="buyNow('LS2 FF800 Storm Full Face Helmet','₹8,999','DOT & SNELL Certified')"><i
+              class="fab fa-whatsapp"></i> BUY ON WHATSAPP</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="helmet">
+        <div class="product-badge">FLIP UP</div>
+        <div class="product-cert"><span class="cert-badge">ECE</span><span class="cert-badge">DOT</span></div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1558981033-0f0309284409?w=400&q=80" alt="AGV K5 Helmet">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">AGV</div>
+          <div class="product-name">K5 S Modular Flip Helmet</div>
+          <div class="product-desc">Italian craftsmanship. Modular design with sun visor. Bluetooth ready. Premium
+            touring helmet.</div>
+          <div class="price-row"><span class="price-offer">₹15,499</span><span class="price-mrp">₹20,000</span><span
+              class="price-save">Save ₹4,501</span></div>
+          <button class="btn-buy" onclick="buyNow('AGV K5 S Modular Helmet','₹15,499','ECE & DOT Certified')"><i
+              class="fab fa-whatsapp"></i> BUY ON WHATSAPP</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="helmet">
+        <div class="product-badge">KIDS</div>
+        <div class="product-cert"><span class="cert-badge">ISI</span></div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1616161560417-2af2abd45e6f?w=400&q=80" alt="Kids Helmet">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Vega</div>
+          <div class="product-name">Ninja Kids Full Face Helmet</div>
+          <div class="product-desc">Lightweight and safe for young riders. Vibrant colors and fun graphics. ISI
+            certified for safety.</div>
+          <div class="price-row"><span class="price-offer">₹699</span><span class="price-mrp">₹999</span><span
+              class="price-save">Save ₹300</span></div>
+          <button class="btn-buy" onclick="buyNow('Vega Ninja Kids Helmet','₹699','ISI Certified')"><i
+              class="fab fa-whatsapp"></i> BUY ON WHATSAPP</button>
+        </div>
+      </div>
+
+      <!-- JACKETS -->
+      <div class="product-card" data-cat="jacket">
+        <div class="product-badge">TRENDING</div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80" alt="Riding Jacket">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Rynox</div>
+          <div class="product-name">Air GT Mesh Riding Jacket</div>
+          <div class="product-desc">CE Level 2 armor. Breathable mesh for Indian summers. Waterproof membrane.
+            Reflective piping.</div>
+          <div class="price-row"><span class="price-offer">₹4,999</span><span class="price-mrp">₹7,000</span><span
+              class="price-save">Save ₹2,001</span></div>
+          <button class="btn-buy" onclick="buyNow('Rynox Air GT Mesh Riding Jacket','₹4,999','CE Level 2 Armor')"><i
+              class="fab fa-whatsapp"></i> BUY ON WHATSAPP</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="jacket">
+        <div class="product-badge">NEW</div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&q=80" alt="Leather Jacket">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Raida</div>
+          <div class="product-name">GrandTour Leather Jacket</div>
+          <div class="product-desc">Full grain leather. Pre-curved sleeves. CE armor at elbows & shoulders. Classic
+            touring style.</div>
+          <div class="price-row"><span class="price-offer">₹8,500</span><span class="price-mrp">₹12,000</span><span
+              class="price-save">Save ₹3,500</span></div>
+          <button class="btn-buy" onclick="buyNow('Raida GrandTour Leather Jacket','₹8,500','CE Armor Included')"><i
+              class="fab fa-whatsapp"></i> BUY ON WHATSAPP</button>
+        </div>
+      </div>
+
+      <!-- ACCESSORIES -->
+      <div class="product-card" data-cat="accessories">
+        <div class="product-badge">POPULAR</div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Riding Gloves">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Cramster</div>
+          <div class="product-name">Neutron Pro Riding Gloves</div>
+          <div class="product-desc">Full gauntlet style. Knuckle protection. Touchscreen compatible fingertips.
+            Anti-slip palm.</div>
+          <div class="price-row"><span class="price-offer">₹1,299</span><span class="price-mrp">₹1,800</span><span
+              class="price-save">Save ₹501</span></div>
+          <button class="btn-buy" onclick="buyNow('Cramster Neutron Pro Gloves','₹1,299','CE Certified')"><i
+              class="fab fa-whatsapp"></i> BUY ON WHATSAPP</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="accessories">
+        <div class="product-badge">MUST HAVE</div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=400&q=80" alt="Knee Guards">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Motonation</div>
+          <div class="product-name">Knee & Shin Guard Set</div>
+          <div class="product-desc">Hard shell + EVA foam. Adjustable straps. Lightweight. Essential protection for
+            every rider.</div>
+          <div class="price-row"><span class="price-offer">₹799</span><span class="price-mrp">₹1,200</span><span
+              class="price-save">Save ₹401</span></div>
+          <button class="btn-buy" onclick="buyNow('Motonation Knee & Shin Guard Set','₹799','CE Protection Level 1')"><i
+              class="fab fa-whatsapp"></i> BUY ON WHATSAPP</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="accessories">
+        <div class="product-badge">RIDING GEAR</div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Riding Boots">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">TCX</div>
+          <div class="product-name">Comp Evo 2 Michelin Boots</div>
+          <div class="product-desc">Michelin sole. Heel & ankle protection. CE certified. Waterproof. For touring &
+            adventure riders.</div>
+          <div class="price-row"><span class="price-offer">₹6,999</span><span class="price-mrp">₹9,500</span><span
+              class="price-save">Save ₹2,501</span></div>
+          <button class="btn-buy" onclick="buyNow('TCX Comp Evo 2 Riding Boots','₹6,999','CE Certified')"><i
+              class="fab fa-whatsapp"></i> BUY ON WHATSAPP</button>
+        </div>
+      </div>
+
+      <!-- BIKE COVERS -->
+      <div class="product-card" data-cat="cover">
+        <div class="product-badge">WATERPROOF</div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=400&q=80" alt="Bike Cover">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">AutoKraftZ</div>
+          <div class="product-name">Universal Bike Body Cover</div>
+          <div class="product-desc">100% waterproof. UV protection. Dustproof. Mirror pockets. Fits all 150cc-250cc
+            bikes. Carry bag included.</div>
+          <div class="price-row"><span class="price-offer">₹699</span><span class="price-mrp">₹1,100</span><span
+              class="price-save">Save ₹401</span></div>
+          <button class="btn-buy" onclick="buyNow('AutoKraftZ Universal Bike Cover','₹699','UV & Waterproof')"><i
+              class="fab fa-whatsapp"></i> BUY ON WHATSAPP</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="cover">
+        <div class="product-badge">PREMIUM</div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400&q=80" alt="Premium Bike Cover">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Motowrap</div>
+          <div class="product-name">Premium 6-Layer Bike Cover</div>
+          <div class="product-desc">Heavy duty 6-layer protection. Heat resistant. Reflective strips for night
+            visibility. Elastic bottom hem.</div>
+          <div class="price-row"><span class="price-offer">₹1,299</span><span class="price-mrp">₹2,000</span><span
+              class="price-save">Save ₹701</span></div>
+          <button class="btn-buy" onclick="buyNow('Motowrap 6-Layer Premium Bike Cover','₹1,299','Heat Resistant')"><i
+              class="fab fa-whatsapp"></i> BUY ON WHATSAPP</button>
+        </div>
+      </div>
+
+      <!-- TRIP ACCESSORIES -->
+      <div class="product-card" data-cat="trip">
+        <div class="product-badge">ADVENTURE</div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=400&q=80" alt="Saddle Bags">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Viaterra</div>
+          <div class="product-name">Claw Tail Bag 45L</div>
+          <div class="product-desc">45L capacity. Fully waterproof. Quick release straps. Helmet compatible. Perfect for
+            long rides.</div>
+          <div class="price-row"><span class="price-offer">₹3,499</span><span class="price-mrp">₹5,000</span><span
+              class="price-save">Save ₹1,501</span></div>
+          <button class="btn-buy" onclick="buyNow('Viaterra Claw Tail Bag 45L','₹3,499','100% Waterproof')"><i
+              class="fab fa-whatsapp"></i> BUY ON WHATSAPP</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="trip">
+        <div class="product-badge">GPS MOUNT</div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&q=80" alt="Phone Mount">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">SP Connect</div>
+          <div class="product-name">Moto Mirror Mount Pro</div>
+          <div class="product-desc">360° rotation. Anti-vibration lock. Fits all smartphones. Waterproof housing. Quick
+            1-click release.</div>
+          <div class="price-row"><span class="price-offer">₹1,099</span><span class="price-mrp">₹1,599</span><span
+              class="price-save">Save ₹500</span></div>
+          <button class="btn-buy" onclick="buyNow('SP Connect Moto Mirror Mount Pro','₹1,099','Universal Fit')"><i
+              class="fab fa-whatsapp"></i> BUY ON WHATSAPP</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="trip">
+        <div class="product-badge">SAFETY</div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&q=80" alt="Riding Visor">
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Biltwell</div>
+          <div class="product-name">Lane Splitter Visor - Bubble</div>
+          <div class="product-desc">Anti-fog coating. UV400 protection. Scratch-resistant. Compatible with open face
+            helmets.</div>
+          <div class="price-row"><span class="price-offer">₹599</span><span class="price-mrp">₹900</span><span
+              class="price-save">Save ₹301</span></div>
+          <button class="btn-buy" onclick="buyNow('Biltwell Bubble Visor','₹599','UV400 Protection')"><i
+              class="fab fa-whatsapp"></i> BUY ON WHATSAPP</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" style="padding:80px 5%;">
+    <div class="section-header">
+      <div class="section-tag">Verified Safety</div>
+      <h2 class="section-title">CERTIFIED <span>STANDARDS</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon">🇮🇳</div>
+        <div class="cert-name">ISI Mark</div>
+        <div class="cert-desc">Bureau of Indian Standards certification. Mandatory for helmets sold in India. Ensures
+          minimum safety standards.</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🇺🇸</div>
+        <div class="cert-name">DOT</div>
+        <div class="cert-desc">US Department of Transportation standard. Rigorous impact absorption, penetration
+          resistance & retention tests.</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🇪🇺</div>
+        <div class="cert-name">ECE 22.06</div>
+        <div class="cert-desc">United Nations Economic Commission for Europe. Latest standard with enhanced rotational
+          impact protection.</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🏆</div>
+        <div class="cert-name">SNELL</div>
+        <div class="cert-desc">Strictest voluntary helmet safety standard. Surpasses government requirements. For
+          premium racing helmets.</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🛡️</div>
+        <div class="cert-name">CE Level 2</div>
+        <div class="cert-desc">European Conformity for riding gear. Level 2 is highest protection for jackets, gloves,
+          and knee guards.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / TIMELINE -->
+  <section id="about" style="padding:80px 5%;background:var(--darker);">
+    <div class="section-header">
+      <div class="section-tag">Our Journey</div>
+      <h2 class="section-title">15 YEARS OF <span>TRUST</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2012</div>
+          <div class="tl-title">The Beginning 🌱</div>
+          <div class="tl-text">Sri Venkatachalapathy Agencies was founded by Navanithan KJ in Thanjavur with a vision to
+            provide quality bike accessories to Tamil Nadu riders.</div>
+        </div>
+      </div>
+      <div class="tl-item right">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2015</div>
+          <div class="tl-title">Expanding Range 🚀</div>
+          <div class="tl-text">Introduced international branded helmets including AGV, LS2, and HJC. Became the go-to
+            destination for premium helmets in Thanjavur.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2018</div>
+          <div class="tl-title">5000+ Customers 🎉</div>
+          <div class="tl-text">Crossed the milestone of 5000 happy customers. Started offering personalized helmet
+            fitting services and safety consultations.</div>
+        </div>
+      </div>
+      <div class="tl-item right">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2020</div>
+          <div class="tl-title">Parcel Service Launch 📦</div>
+          <div class="tl-text">Launched pan-Tamil Nadu parcel delivery service. Riders from Coimbatore to Chennai could
+            now order premium gear from our store.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2023</div>
+          <div class="tl-title">10,000+ Customers 🏆</div>
+          <div class="tl-text">Achieved the landmark of 10,000+ satisfied customers. Expanded riding jacket and
+            adventure gear collection significantly.</div>
+        </div>
+      </div>
+      <div class="tl-item right">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2026</div>
+          <div class="tl-title">Still Going Strong 💪</div>
+          <div class="tl-text">15 years and still Thanjavur's most trusted bike accessories store. Now available online.
+            Your safety is still our priority!</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OWNER -->
+  <section id="owner">
+    <div class="section-header">
+      <div class="section-tag">Meet Our Founder</div>
+      <h2 class="section-title">THE MAN <span>BEHIND IT</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="owner-box">
+      <div class="owner-avatar">NK</div>
+      <div class="owner-info">
+        <h2>Navanithan KJ</h2>
+        <div class="owner-role">Founder & Owner · Sri Venkatachalapathy Agencies</div>
+        <p>With over 15 years of passion for motorcycles and rider safety, Navanithan KJ has built one of Tamil Nadu's
+          most trusted bike accessories stores. His expert knowledge helps every customer find the perfect helmet for
+          their budget and riding style. Known for honest advice and never overselling — he ensures your safety comes
+          first.</p>
+        <p><i class="fas fa-quote-left" style="color:var(--red);margin-right:8px;"></i>"The right helmet isn't just an
+          accessory — it's the difference between life and death. I help every rider find their perfect fit."</p>
+        <div class="owner-badges">
+          <span class="owner-badge">✅ Helmet Safety Expert</span>
+          <span class="owner-badge">🏍️ 15+ Years Experience</span>
+          <span class="owner-badge">🤝 10,000+ Customers Served</span>
+          <span class="owner-badge">📦 All TN Delivery</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCEL SERVICE -->
+  <section id="parcel">
+    <div class="section-header">
+      <div class="section-tag">Delivery</div>
+      <h2 class="section-title">ALL OVER <span>TAMIL NADU</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="parcel-content">
+      <div class="parcel-text">
+        <h2>Fast & Safe <span>Parcel Service</span></h2>
+        <p>We deliver your favourite bike accessories and helmets to every corner of Tamil Nadu. From Chennai to
+          Kanyakumari, from Coimbatore to Madurai — your order reaches you safely packed.</p>
+        <div class="parcel-features">
+          <div class="parcel-feat"><i class="fas fa-box"></i> Secure & Padded Packaging for Helmets</div>
+          <div class="parcel-feat"><i class="fas fa-truck-fast"></i> Fast Delivery to All 38 Districts</div>
+          <div class="parcel-feat"><i class="fab fa-whatsapp"></i> Order via WhatsApp - Simple & Easy</div>
+          <div class="parcel-feat"><i class="fas fa-shield-halved"></i> Quality Check Before Dispatch</div>
+          <div class="parcel-feat"><i class="fas fa-phone"></i> Real-time Tracking Updates on WhatsApp</div>
+          <div class="parcel-feat"><i class="fas fa-indian-rupee-sign"></i> Affordable Shipping Charges</div>
+        </div>
+      </div>
+      <div class="parcel-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d979.8594796534875!2d79.1414302!3d10.7777332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baab9c7fc38d561%3A0x393d2713594be990!2sSri%20Venkatachalapathy%20agencies!5e0!3m2!1sen!2sin!4v1775725009367!5m2!1sen!2sin"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHATSAPP COMMUNITY -->
+  <section id="community">
+    <div class="section-header">
+      <div class="section-tag">Join Us</div>
+      <h2 class="section-title">WHATSAPP <span>COMMUNITY</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="wa-box">
+      <div class="wa-icon"><i class="fab fa-whatsapp"></i></div>
+      <div class="wa-title">Stay Updated with Latest Offers!</div>
+      <div class="wa-subtitle">Join our WhatsApp community to get exclusive deals, new product launches, riding tips,
+        and special member-only discounts. Be the first to know about our flash sales!</div>
+      <div class="qr-area">
+        <div class="qr-code">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" fill="white" />
+            <rect x="10" y="10" width="30" height="30" fill="black" />
+            <rect x="14" y="14" width="22" height="22" fill="white" />
+            <rect x="18" y="18" width="14" height="14" fill="black" />
+            <rect x="60" y="10" width="30" height="30" fill="black" />
+            <rect x="64" y="14" width="22" height="22" fill="white" />
+            <rect x="68" y="18" width="14" height="14" fill="black" />
+            <rect x="10" y="60" width="30" height="30" fill="black" />
+            <rect x="14" y="64" width="22" height="22" fill="white" />
+            <rect x="18" y="68" width="14" height="14" fill="black" />
+            <rect x="45" y="10" width="5" height="5" fill="black" />
+            <rect x="55" y="10" width="5" height="5" fill="black" />
+            <rect x="45" y="20" width="5" height="5" fill="black" />
+            <rect x="45" y="30" width="5" height="5" fill="black" />
+            <rect x="55" y="25" width="5" height="5" fill="black" />
+            <rect x="45" y="45" width="5" height="5" fill="black" />
+            <rect x="55" y="45" width="5" height="5" fill="black" />
+            <rect x="65" y="45" width="5" height="5" fill="black" />
+            <rect x="75" y="45" width="5" height="5" fill="black" />
+            <rect x="85" y="45" width="5" height="5" fill="black" />
+            <rect x="45" y="55" width="5" height="5" fill="black" />
+            <rect x="75" y="55" width="5" height="5" fill="black" />
+            <rect x="45" y="65" width="5" height="5" fill="black" />
+            <rect x="55" y="65" width="5" height="5" fill="black" />
+            <rect x="65" y="65" width="5" height="5" fill="black" />
+            <rect x="85" y="65" width="5" height="5" fill="black" />
+            <rect x="55" y="75" width="5" height="5" fill="black" />
+            <rect x="75" y="75" width="5" height="5" fill="black" />
+            <rect x="45" y="85" width="5" height="5" fill="black" />
+            <rect x="65" y="85" width="5" height="5" fill="black" />
+            <rect x="85" y="85" width="5" height="5" fill="black" />
+          </svg>
+        </div>
+        <div class="qr-text">
+          <p>📱 Scan QR code with your camera<br>or click the button below</p>
+          <p style="color:var(--white);font-weight:600;">📞 9362352777</p>
+        </div>
+      </div>
+      <button class="btn-wa"
+        onclick="window.open('https://wa.me/919362352777?text=Hi! I want to join Sri Venkatachalapathy Agencies WhatsApp Community','_blank')">
+        <i class="fab fa-whatsapp"></i> JOIN WHATSAPP COMMUNITY
+      </button>
+    </div>
+  </section>
+
+  <!-- MAP SECTION -->
+  <div class="map-section">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d979.8594796534875!2d79.1414302!3d10.7777332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baab9c7fc38d561%3A0x393d2713594be990!2sSri%20Venkatachalapathy%20agencies!5e0!3m2!1sen!2sin!4v1775725009367!5m2!1sen!2sin"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="map-overlay">
+      <h4>📍 Find Us Here</h4>
+      <p>2898A, Srinivasan Pillai Rd<br>Graham Nagar, Thanjavur - 613001</p>
+      <a href="https://maps.google.com/?q=Sri+Venkatachalapathy+agencies+Thanjavur" target="_blank"
+        style="color:var(--red);font-size:12px;text-decoration:none;font-family:'Rajdhani',sans-serif;letter-spacing:1px;">OPEN
+        IN MAPS →</a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-header">
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="section-title">CONTACT <span>US</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>We're Here to Help You</h3>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-location-dot"></i></div>
+          <div>
+            <div class="contact-label">Address</div>
+            <div class="contact-val">2898A, Srinivasan Pillai Rd, Graham Nagar, Shivaji Nagar, Thanjavur, Tamil Nadu
+              613001</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <div class="contact-label">Phone / WhatsApp</div>
+            <div class="contact-val"><a href="tel:9362352777">+91 93623 52777</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-val"><a href="mailto:srivenkatachalapathy@gmail.com">srivenkatachalapathy@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="hours-box">
+          <div class="hours-title">Store Hours</div>
+          <div class="hours-row"><span>Monday – Saturday</span><span>9:00 AM – 8:00 PM</span></div>
+          <div class="hours-row"><span>Sunday</span><span>10:00 AM – 5:00 PM</span></div>
+          <div class="hours-row"><span>Public Holidays</span><span>Call to Confirm</span></div>
+        </div>
+        <div class="social-row">
+          <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/919362352777" class="social-btn" title="WhatsApp"
+            style="color:#25D366;border-color:#25D366;"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://maps.google.com/?q=Sri+Venkatachalapathy+agencies+Thanjavur" target="_blank"
+            class="social-btn" title="Google Maps"><i class="fab fa-google"></i></a>
+          <a href="mailto:srivenkatachalapathy@gmail.com" class="social-btn" title="Email"><i
+              class="fas fa-envelope"></i></a>
+          <a href="https://youtube.com" target="_blank" class="social-btn" title="YouTube"><i
+              class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--card);border:1px solid var(--border);padding:40px;">
+          <h3 style="font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;margin-bottom:24px;">Quick Enquiry
+            via <span style="color:#25D366;">WhatsApp</span></h3>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <input type="text" id="enquiryName" placeholder="Your Name"
+              style="background:var(--dark);border:1px solid var(--border);color:var(--white);padding:14px;font-family:'Exo 2',sans-serif;font-size:14px;outline:none;width:100%;transition:border 0.3s;"
+              onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--border)'">
+            <input type="tel" id="enquiryPhone" placeholder="Your Phone Number"
+              style="background:var(--dark);border:1px solid var(--border);color:var(--white);padding:14px;font-family:'Exo 2',sans-serif;font-size:14px;outline:none;width:100%;transition:border 0.3s;"
+              onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--border)'">
+            <textarea id="enquiryMsg"
+              placeholder="What are you looking for? (e.g., ISI helmet under ₹1500, riding jacket size M...)" rows="4"
+              style="background:var(--dark);border:1px solid var(--border);color:var(--white);padding:14px;font-family:'Exo 2',sans-serif;font-size:14px;outline:none;width:100%;resize:none;transition:border 0.3s;"
+              onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+            <button class="btn-wa" style="justify-content:center;" onclick="sendEnquiry()"><i
+                class="fab fa-whatsapp"></i> SEND ENQUIRY ON WHATSAPP</button>
+          </div>
+          <p style="font-size:12px;color:var(--muted);margin-top:16px;text-align:center;"><i class="fas fa-bolt"
+              style="color:var(--accent);"></i> We respond within 30 minutes!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">SRI <span>VENKATACHALAPATHY</span></div>
+        <p>Thanjavur's most trusted bike accessories store since 2012. Providing quality helmets and riding gear to over
+          10,000+ riders across Tamil Nadu.</p>
+        <div class="social-row">
+          <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/919362352777" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://maps.google.com/?q=Sri+Venkatachalapathy+agencies+Thanjavur" target="_blank"
+            class="social-btn"><i class="fab fa-google"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#products">Full Face Helmets</a></li>
+          <li><a href="#products">Open Face Helmets</a></li>
+          <li><a href="#products">Modular Helmets</a></li>
+          <li><a href="#products">Riding Jackets</a></li>
+          <li><a href="#products">Riding Gloves</a></li>
+          <li><a href="#products">Bike Covers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#parcel">Delivery Info</a></li>
+          <li><a href="#community">WA Community</a></li>
+          <li><a href="#owner">Meet Owner</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Brands We Carry</h4>
+        <ul>
+          <li><a href="#">Steelbird</a></li>
+          <li><a href="#">Vega</a></li>
+          <li><a href="#">Studds</a></li>
+          <li><a href="#">LS2</a></li>
+          <li><a href="#">AGV</a></li>
+          <li><a href="#">Rynox</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2012–2026 Sri Venkatachalapathy Agencies, Thanjavur. All rights reserved.</p>
+      <p style="color:var(--red);">Made with ❤️ for Tamil Nadu Riders</p>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+
+  <script>
+    // ===== LOADER =====
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('hide');
+        setTimeout(() => document.getElementById('loader').remove(), 700);
+      }, 2500);
+    });
+
+    // ===== NAV HAMBURGER =====
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    // ===== BACK TO TOP =====
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('topBtn');
+      if (window.scrollY > 400) btn.classList.add('show'); else btn.classList.remove('show');
+    });
+
+    // ===== SCROLL TO SECTION =====
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ===== COUNTER ANIMATION =====
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target);
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = Math.floor(current).toLocaleString('en-IN') + (target >= 10000 ? '+' : target === 5 ? '★' : '');
+      }, 16);
+    }
+
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); counterObs.unobserve(e.target); } });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.stat-num').forEach(el => counterObs.observe(el));
+
+    // ===== TIMELINE ANIMATION =====
+    const tlObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.tl-item').forEach(el => tlObs.observe(el));
+
+    // ===== PRODUCT FILTER =====
+    function filterProducts(cat) {
+      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+      document.querySelectorAll('.product-card').forEach(card => {
+        if (cat === 'all' || card.dataset.cat === cat) card.classList.remove('hidden');
+        else card.classList.add('hidden');
+      });
+    }
+
+    // ===== BUY / POPUP =====
+    let currentProductMsg = '';
+    function buyNow(name, price, cert) {
+      const msg = `🏍️ *Sri Venkatachalapathy Agencies*\n\n*Product Inquiry:*\n📦 ${name}\n💰 Price: ${price}\n✅ ${cert}\n\n🙏 I'd like to know more about this product. Please help me!`;
+      currentProductMsg = msg;
+      document.getElementById('popupProductInfo').innerHTML = `<strong>Product:</strong> ${name}<br><strong>Price:</strong> ${price}<br><strong>Cert:</strong> ${cert}`;
+      document.getElementById('purchasePopup').classList.add('show');
+      // Auto WhatsApp redirect
+      setTimeout(() => window.open('https://wa.me/919362352777?text=' + encodeURIComponent(msg), '_blank'), 800);
+      startPopupTimer();
+    }
+    function closePopup() {
+      document.getElementById('purchasePopup').classList.remove('show');
+    }
+    let timerInterval;
+    function startPopupTimer() {
+      clearInterval(timerInterval);
+      let mins = 30, secs = 0;
+      const el = document.getElementById('popupTimer');
+      timerInterval = setInterval(() => {
+        el.textContent = String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+        if (secs === 0) { if (mins === 0) { clearInterval(timerInterval); return; } mins--; secs = 59; }
+        else secs--;
+      }, 1000);
+    }
+    document.getElementById('purchasePopup').addEventListener('click', function (e) {
+      if (e.target === this) closePopup();
+    });
+
+    // ===== CONTACT ENQUIRY =====
+    function sendEnquiry() {
+      const name = document.getElementById('enquiryName').value || 'Customer';
+      const phone = document.getElementById('enquiryPhone').value || 'Not provided';
+      const msg = document.getElementById('enquiryMsg').value || 'General enquiry';
+      const waMsg = `🏍️ *Sri Venkatachalapathy Agencies - Enquiry*\n\n*Name:* ${name}\n*Phone:* ${phone}\n\n*Message:*\n${msg}\n\n_Sent from website_`;
+      window.open('https://wa.me/919362352777?text=' + encodeURIComponent(waMsg), '_blank');
+    }
+
+    // ===== SMOOTH SCROLL FOR NAV LINKS =====
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { target.scrollIntoView({ behavior: 'smooth' }); document.getElementById('navLinks').classList.remove('open'); }
+      });
+    });
+
+    // ===== PRODUCT CARD HOVER ANIMATION =====
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.addEventListener('mouseenter', () => { card.style.zIndex = '10'; });
+      card.addEventListener('mouseleave', () => { card.style.zIndex = '1'; });
+    });
+  </script>
+</body>
+
+</html>
